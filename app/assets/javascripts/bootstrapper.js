@@ -17,10 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!(typeof Turbolinks !== 'undefined')) {
     mountComponents();
   } else {
-    if (typeof Turbolinks.controller !== 'undefined') {
-      document.addEventListener('turbolinks:load', mountComponents);
-    } else {
-      document.addEventListener('page:change', mountComponents);
-    }
+    document.addEventListener('turbolinks:load', mountComponents);
   }
 });
