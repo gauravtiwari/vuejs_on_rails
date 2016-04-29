@@ -1,0 +1,35 @@
+<h1>Post Show</h1>
+<hr />
+<div data-behaviour="component" data-props="<%= { post: {
+    title: @post.title,
+    body: @post.body,
+    url: posts_path,
+    id: @post.id
+}}.to_json %>">
+  <div class="post">
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.body }}</p>
+    <a href="{{ post.url}}">return to posts</a>
+  </div>
+</div>
+
+<div data-behaviour="component" data-props="<%= { comments: @post.comments.map{|comment|
+   {
+    body: comment.body,
+    id: comment.id
+  }
+}, newComment: {body: ''}}.to_json %>">
+  <p>Add comment</p>
+  <form v-on:submit.prevent="addComment">
+    <input v-model="newComment.body" />
+    <input type="hidden" v-model="newComment.post_id" value="<%= @post.id %>" />
+  </form>
+  <div class="comments">
+    <li v-for="comment in comments">
+      <p>{{ comment.body }}</p>
+    </li>
+  </div>
+</div>
+
+
+

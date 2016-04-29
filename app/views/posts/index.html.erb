@@ -1,0 +1,16 @@
+<h1>Posts</h1>
+<hr />
+<div data-behaviour="component" data-props="<%= { posts: @posts.map{|post| {
+    title: post.title,
+    body: post.body,
+    url: post_path(post),
+    id: post.id
+}}}.to_json %>">
+  <ul>
+    <li v-for="post in posts">
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.body }}</p>
+      <a href="{{ post.url}}">Go to post</a>
+    </li>
+  </ul>
+</div>
