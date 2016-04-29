@@ -4,8 +4,6 @@ function mountComponents() {
     const node = components[i]
     const props = JSON.parse(node.getAttribute('data-props'));
 
-    Vue.use(VueResource);
-
     new Vue({
       el: node,
       data: props,
