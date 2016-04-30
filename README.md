@@ -1,24 +1,10 @@
-# README
+# Vuejs On Rails
+Integration of vuejs on Rails.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To start your Rails app:
 
-Things you may want to cover:
+  * Install dependencies with `bundle`
+  * Create and migrate your database with `rake db:create db:migrate db:seed`
+  * Start Rails endpoint with `bundle exec rails s`
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Now you can visit [`localhost:3000`](http://localhost:3000) from your browser.
