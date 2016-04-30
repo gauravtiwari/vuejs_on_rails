@@ -12,9 +12,11 @@ function mountComponents() {
           $.post('/posts/' + this.newComment.post_id + '/comments', { comment: this.newComment }, function(data, textStatus, xhr) {
             console.log(this)
             if (data) {
-              this.comments.push({
+              // Add it to the top
+              this.comments.unshift({
                 body: this.newComment.body,
               });
+              // Cleanup new comment object
               this.newComment = {
                 body: '',
                 post_id: this.newComment.post_id
