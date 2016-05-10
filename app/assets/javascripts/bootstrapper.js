@@ -2,7 +2,7 @@
 function mountComponents() {
   const components = document.querySelectorAll('[data-behaviour="component"]');
   for (var index = 0; index < components.length; index++) {
-    const node = components[num];
+    const node = components[index];
     const props = JSON.parse(node.getAttribute('data-props'));
     const componentName = node.getAttribute('data-component-name');
     var constructor = window[componentName] || eval.call(window, componentName);

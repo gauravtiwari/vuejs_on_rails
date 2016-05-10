@@ -20,8 +20,14 @@ var Comments = {
 
   methods: {
     addComment: function() {
-      $.post('/posts/' + this.post_id + '/comments', { comment: {body: this.newComment.body, post_id: this.post_id} }, function(data, textStatus, xhr) {
-        if (data) {
+      var url = '/posts/' + this.post_id + '/comments';
+      var newComment = {
+        body: this.newComment.body,
+        post_id: this.post_id
+      };
+
+      $.post(url, { comment: newComment}, function(data, textStatus, xhr) {
+        if (textStatus === 'success' && data) {
           // Add it to the top
           this.comments.unshift({
             body: this.newComment.body,
