@@ -1,7 +1,7 @@
 // Instantiate vue instances dyanamically
 function mountComponents() {
   const components = document.querySelectorAll('[data-behaviour="component"]');
-  for (var num = 0; num < components.length; num++) {
+  for (var index = 0; index < components.length; index++) {
     const node = components[num];
     const props = JSON.parse(node.getAttribute('data-props'));
     const componentName = node.getAttribute('data-component-name');
