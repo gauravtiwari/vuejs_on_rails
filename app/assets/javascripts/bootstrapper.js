@@ -1,6 +1,4 @@
-window.Post = {};
-window.Posts = {};
-
+// Instantiate vue instances dyanamically
 
 function mountComponents() {
   const components = document.querySelectorAll('[data-behaviour="component"]');
@@ -8,14 +6,15 @@ function mountComponents() {
     const node = components[num];
     const props = JSON.parse(node.getAttribute('data-props'));
     const componentName = node.getAttribute('data-component-name');
+    var constructor = window[componentName] || eval.call(window, componentName);
 
-    window[componentName].el = node;
-    window[componentName].data = props;
-    const $vue = new Vue(window[componentName]);
+    constructor.el = node;
+    constructor.data = props;
+    const $vue = new Vue(constructor);
   }
 }
 
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function() {
   if (!(typeof Turbolinks !== 'undefined')) {
     mountComponents();
   } else {

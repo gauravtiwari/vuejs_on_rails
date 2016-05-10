@@ -1,3 +1,5 @@
+// Customise vue instance objects
+
 var Comments = {
   attached: function() {
     var self = this;
@@ -35,4 +37,5 @@ var Comments = {
   }
 };
 
+// Attach it to window object
 window.Comments = Comments;
