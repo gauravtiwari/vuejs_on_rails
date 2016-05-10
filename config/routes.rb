@@ -4,4 +4,5 @@ Rails.application.routes.draw do
     resources :votes
     resources :comments
   end
+  mount ActionCable.server => '/cable'
 end
