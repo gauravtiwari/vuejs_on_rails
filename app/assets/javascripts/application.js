@@ -7,5 +7,5 @@
 //= require vue-resource
 //= require cable
 //= require comments
-// = require posts
+//= require bootstrapper
 //= require turbolinks
