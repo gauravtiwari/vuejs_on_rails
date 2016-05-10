@@ -1,5 +1,4 @@
 // Instantiate vue instances dyanamically
-
 function mountComponents() {
   const components = document.querySelectorAll('[data-behaviour="component"]');
   for (var num = 0; num < components.length; num++) {
@@ -13,7 +12,7 @@ function mountComponents() {
     const $vue = new Vue(constructor);
   }
 }
-
+// Attach event Turbolinks event listeners
 document.addEventListener('DOMContentLoaded', function() {
   if (!(typeof Turbolinks !== 'undefined')) {
     mountComponents();
