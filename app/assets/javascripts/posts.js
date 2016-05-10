@@ -1,35 +1,21 @@
+window.Post = {};
+window.Posts = {};
+
+
 function mountComponents() {
   const components = document.querySelectorAll('[data-behaviour="component"]');
-  for (let i = 0; i < components.length; i++) {
-    const node = components[i]
+  for (var num = 0; num < components.length; num++) {
+    const node = components[num];
     const props = JSON.parse(node.getAttribute('data-props'));
+    const componentName = node.getAttribute('data-component-name');
 
-    new Vue({
-      el: node,
-      data: props,
-      methods: {
-        addComment: function() {
-          $.post('/posts/' + this.newComment.post_id + '/comments', { comment: this.newComment }, function(data, textStatus, xhr) {
-            console.log(this)
-            if (data) {
-              // Add it to the top
-              this.comments.unshift({
-                body: this.newComment.body,
-              });
-              // Cleanup new comment object
-              this.newComment = {
-                body: '',
-                post_id: this.newComment.post_id
-              }
-            }
-          }.bind(this), 'json');
-        },
-      }
-    })
+    window[componentName].el = node;
+    window[componentName].data = props;
+    const $vue = new Vue(window[componentName]);
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function(){
   if (!(typeof Turbolinks !== 'undefined')) {
     mountComponents();
   } else {
@@ -40,4 +26,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
-
