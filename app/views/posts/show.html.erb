@@ -1,6 +1,6 @@
 <h1>Post Show</h1>
 <hr />
-<div data-behaviour="component" data-props="<%= { post: {
+<div data-behaviour="component" data-component-name="Post" data-props="<%= { post: {
     title: @post.title,
     body: @post.body,
     url: posts_path,
@@ -14,16 +14,15 @@
 </div>
 
 <hr />
-<div data-behaviour="component" data-props="<%= { comments: @comments.map{|comment|
+<div data-behaviour="component" data-component-name="Comments" data-props="<%= { comments: @comments.map{|comment|
    {
     body: comment.body,
     id: comment.id
   }
-}, newComment: {body: ''}}.to_json %>">
+}, newComment: {body: ''}, post_id: @post.id}.to_json %>">
   <p>Add comment</p>
   <form v-on:submit.prevent="addComment">
     <input v-model="newComment.body" />
-    <input type="hidden" v-model="newComment.post_id" value="<%= @post.id %>" />
   </form>
   <div class="comments">
     <li v-for="comment in comments">

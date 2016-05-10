@@ -1,6 +1,6 @@
 <h1>All Posts</h1>
 <hr />
-<div data-behaviour="component" data-props="<%= { posts: @posts.map{|post| {
+<div data-behaviour="component" data-component-name="Posts" data-props="<%= { posts: @posts.map{|post| {
     title: post.title,
     body: post.body,
     url: post_path(post),
